@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
 
-router.get('/login', (req, res) => {
-  res.render('login', { error: null });
+router.get('/', (req, res) => {
+  res.render('home');
 });
 
 router.post('/login', async (req, res) => {
