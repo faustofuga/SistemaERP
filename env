@@ -1,2 +1,2 @@
 # Substitua pelo seu URL real do Railway
-DATABASE_URL=postgresql://postgres:SyCzWpEkhMQdOuKUSjMoeYSrwqXOqtPJ@postgres.railway.internal:5432/railway
+DATABASE_URL=postgresql://postgres:SyCzWpEkhMQdOuKUSjMoeYSrwqXOqtPJ@trolley.proxy.rlwy.net:20897/railway
