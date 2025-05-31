@@ -19,8 +19,8 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.get('/', (req, res) => {
-  res.render('home');
+router.get('/login', (req, res) => {
+  res.render('login', { error: null });
 });
 
 router.get('/dashboard', (req, res) => {
