@@ -1,0 +1,2 @@
+# Substitua pelo seu URL real do Railway
+DATABASE_URL=postgresql://postgres:SyCzWpEkhMQdOuKUSjMoeYSrwqXOqtPJ@postgres.railway.internal:5432/railway
