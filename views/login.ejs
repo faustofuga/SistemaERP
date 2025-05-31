@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,13 +13,7 @@
       --text: #333;
       --white: #fff;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background: var(--light);
@@ -28,7 +23,6 @@
       height: 100vh;
       color: var(--text);
     }
-
     .login-container {
       background: var(--white);
       padding: 40px;
@@ -38,12 +32,10 @@
       max-width: 400px;
       text-align: center;
     }
-
     h2 {
       margin-bottom: 24px;
       color: var(--primary);
     }
-
     input {
       width: 100%;
       padding: 12px;
@@ -52,7 +44,6 @@
       border-radius: 8px;
       font-size: 16px;
     }
-
     button {
       width: 100%;
       padding: 12px;
@@ -65,21 +56,11 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
-
-    button:hover {
-      background: #176d57;
-    }
-
+    button:hover { background: #176d57; }
     .error {
       color: red;
       margin-bottom: 10px;
       font-size: 14px;
-    }
-
-    @media (max-width: 500px) {
-      .login-container {
-        padding: 30px 20px;
-      }
     }
   </style>
 </head>
