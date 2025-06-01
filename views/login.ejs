@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,84 +9,63 @@
   <style>
     :root {
       --primary: #1f8a70;
-      --background: #f9f9f9;
+      --light: #f9f9f9;
       --text: #333;
       --white: #fff;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--background);
-      color: var(--text);
+      background: var(--light);
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
-      padding: 20px;
+      color: var(--text);
     }
-
-    .login-box {
+    .login-container {
       background: var(--white);
       padding: 40px;
-      border-radius: 16px;
+      border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       width: 100%;
       max-width: 400px;
       text-align: center;
     }
-
     h2 {
       margin-bottom: 24px;
       color: var(--primary);
     }
-
-    form input {
+    input {
       width: 100%;
       padding: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 12px;
+      border-radius: 8px;
       font-size: 16px;
     }
-
     button {
       width: 100%;
       padding: 12px;
       background: var(--primary);
       color: var(--white);
       border: none;
-      border-radius: 12px;
+      border-radius: 8px;
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
       transition: background 0.3s ease;
     }
-
-    button:hover {
-      background: #176d57;
-    }
-
+    button:hover { background: #176d57; }
     .error {
       color: red;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
       font-size: 14px;
-    }
-
-    @media (max-width: 480px) {
-      .login-box {
-        padding: 30px 20px;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="login-box">
+  <div class="login-container">
     <h2>Login</h2>
     <% if (error) { %><div class="error"><%= error %></div><% } %>
     <form method="POST" action="/login">
