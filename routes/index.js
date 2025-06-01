@@ -11,13 +11,15 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const result = await pool.query('SELECT * FROM usuarios WHERE email = $1 AND senha = $2', [email, password]);
+    const result = await pool.query(
+      'SELECT * FROM usuarios WHERE email = $1 AND senha = $2',
+      [email, password]
+    );
 
     if (result.rows.length > 0) {
       const user = result.rows[0];
       req.session.user = user;
 
-      // Redireciona com base no tipo de usuário
       if (user.tipo === 'admin') {
         return res.redirect('/admin/dashboard');
       } else if (user.tipo === 'cliente') {
@@ -29,8 +31,8 @@ router.post('/login', async (req, res) => {
       return res.render('login', { error: 'E-mail ou senha inválidos.' });
     }
   } catch (err) {
-    console.error('Erro ao tentar logar:', err);
-    return res.render('login', { error: 'Erro no servidor. Tente novamente.' });
+    console.error('Erro no login:', err);
+    return res.status(500).render('login', { error: 'Erro no servidor.' });
   }
 });
 
