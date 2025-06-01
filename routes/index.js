@@ -1,3 +1,4 @@
+// routes/index.js
 const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
@@ -8,24 +9,29 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
-  const result = await pool.query("SELECT * FROM usuarios WHERE email = $1", [email]);
-  const user = result.rows[0];
 
-  if (user && password === user.senha) {
-    req.session.userId = user.id;
-    res.redirect('/dashboard');
-  } else {
-    res.render('login', { error: 'Credenciais inválidas' });
+  try {
+    const result = await pool.query('SELECT * FROM usuarios WHERE email = $1 AND senha = $2', [email, password]);
+
+    if (result.rows.length > 0) {
+      const user = result.rows[0];
+      req.session.user = user;
+
+      // Redireciona com base no tipo de usuário
+      if (user.tipo === 'admin') {
+        return res.redirect('/admin/dashboard');
+      } else if (user.tipo === 'cliente') {
+        return res.redirect('/cliente/dashboard');
+      } else {
+        return res.render('login', { error: 'Tipo de usuário inválido.' });
+      }
+    } else {
+      return res.render('login', { error: 'E-mail ou senha inválidos.' });
+    }
+  } catch (err) {
+    console.error('Erro ao tentar logar:', err);
+    return res.render('login', { error: 'Erro no servidor. Tente novamente.' });
   }
-});
-
-router.get('/', (req, res) => {
-  res.render('home');
-});
-
-router.get('/dashboard', (req, res) => {
-  if (!req.session.userId) return res.redirect('/login');
-  res.render('dashboard');
 });
 
 module.exports = router;
