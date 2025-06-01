@@ -7,6 +7,11 @@ router.get('/login', (req, res) => {
   res.render('login', { error: null });
 });
 
+// Página inicial
+router.get('/', (req, res) => {
+  res.render('home'); // Isso busca o arquivo views/home.ejs
+});
+
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
