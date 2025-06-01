@@ -4,6 +4,8 @@ const session = require('express-session');
 const path = require('path');
 const app = express();
 
+app.use('/admin', require('./routes/admin'));
+app.use('/cliente', require('./routes/cliente'));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
