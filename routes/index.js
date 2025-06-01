@@ -19,6 +19,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.get('/', (req, res) => {
+  res.render('home');
+});
+
 router.get('/dashboard', (req, res) => {
   if (!req.session.userId) return res.redirect('/login');
   res.render('dashboard');
