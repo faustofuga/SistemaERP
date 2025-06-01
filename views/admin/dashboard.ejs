@@ -8,5 +8,11 @@
 <body>
   <h1>Bem-vindo, <%= user.nome %> (Admin)</h1>
   <p>Você tem acesso completo ao sistema. PARA ADM</p>
+  <% if (!user) { %>
+  <p style="color:red;">Usuário não está definido</p>
+<% } %>
+<h1>Bem-vindo, <%= user ? user.nome : 'Usuário' %>!</h1>
+<p>Você está logado como <strong><%= user ? user.tipo : 'Desconhecido' %></strong>.</p>
+
 </body>
 </html>
