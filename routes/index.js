@@ -41,4 +41,12 @@ router.get('/dashboard', (req, res) => {
   res.render('dashboard');
 });
 
+// Cliente-fornecedor (protegido)
+router.get('/cliente-fornecedor', (req, res) => {
+  if (!req.session.userId) {
+    return res.redirect('/login');
+  }
+  res.render('cliente-fornecedor');
+});
+
 module.exports = router;
